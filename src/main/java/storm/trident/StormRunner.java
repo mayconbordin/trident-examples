@@ -18,6 +18,8 @@ import java.util.Properties;
 import java.util.Random;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import storm.trident.topology.SentimentAnalysis;
+import storm.trident.topology.TrendingTopics;
 import storm.trident.topology.WordCount;
 import storm.trident.util.Configuration;
 
@@ -55,7 +57,9 @@ public class StormRunner {
     public StormRunner() {
         driver = new AppDriver();
         
-        driver.addApp("word-count"           , WordCount.class);
+        driver.addApp("word-count"        , WordCount.class);
+        driver.addApp("sentiment-analysis", SentimentAnalysis.class);
+        driver.addApp("trending-topics"   , TrendingTopics.class);
     }
     
     public void run() throws InterruptedException, AlreadyAliveException, InvalidTopologyException {
