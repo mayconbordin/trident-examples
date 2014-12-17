@@ -66,7 +66,7 @@ public class SentimentAnalysis extends AbstractTopology {
             case SourceType.FILE:
                 int maxBatchSize = config.getInt(Config.SPOUT_MAX_BATCH_SIZE, 100);
                 String spoutPath = config.getString(Config.SPOUT_PATH);
-                rawTweets = topology.newStream("spout", new FileSpout(maxBatchSize, spoutPath));
+                rawTweets = topology.newStream("spout", new FileSpout(maxBatchSize, spoutPath, "tweet_str"));
                 break;
             case SourceType.KAFKA:
                 createKafkaSpout(spoutType, spoutType);
