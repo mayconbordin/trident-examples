@@ -7,7 +7,6 @@ import storm.kafka.StringScheme;
 import storm.kafka.ZkHosts;
 import storm.kafka.trident.OpaqueTridentKafkaSpout;
 import storm.kafka.trident.TridentKafkaConfig;
-import storm.trident.spout.IBatchSpout;
 import storm.trident.util.Configuration;
 
 /**
