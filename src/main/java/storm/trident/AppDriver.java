@@ -1,6 +1,5 @@
 package storm.trident;
 
-import backtype.storm.Config;
 import backtype.storm.generated.StormTopology;
 import java.lang.reflect.Constructor;
 import java.util.HashMap;
@@ -8,6 +7,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import storm.trident.topology.AbstractTopology;
+import storm.trident.util.Configuration;
 
 /**
  *
@@ -36,9 +36,9 @@ public class AppDriver {
             this.cls = cls;
         }
         
-        public StormTopology getTopology(String topologyName, Config config) {
+        public StormTopology getTopology(String topologyName, Configuration config) {
             try {
-                Constructor c = cls.getConstructor(String.class, Config.class);
+                Constructor c = cls.getConstructor(String.class, Configuration.class);
                 LOG.info("Loaded topology {}", cls.getCanonicalName());
 
                 AbstractTopology topology = (AbstractTopology) c.newInstance(topologyName, config);
